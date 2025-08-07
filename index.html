@@ -1,44 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+		<title>Frontend Mentor | Tip calculator app</title>
 
-  Bill
+		<style>
+			.attribution {
+				font-size: 11px;
+				text-align: center;
+			}
+			.attribution a {
+				color: hsl(228, 45%, 44%);
+			}
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+			@media (width < 875px) {
+				.attribution {
+					display: none;
+				}
+			}
+		</style>
 
-  Number of People
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-  Tip Amount
-  / person
+	<body>
+		<section class="tip-calculator-container">
+			<img src="images/logo.svg" alt="" />
 
-  Total
-  / person
+			<div class="calculator">
+				<div class="tip-inputs-group">
+					<form class="tip-form">
+						<div class="form-group">
+							<div class="input-label-group">
+								<div class="flex-input-group">
+									<label class="label" for="bill">Bill</label>
 
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+									<p id="billp" class="label hidden">
+										Can't be Zero
+									</p>
+								</div>
+								<input
+									type="number"
+									class="bill-amount disabled-input"
+									id="bill"
+									placeholder="0"
+								/>
+							</div>
+
+							<div class="select-tip-section">
+								<label class="label" for="select"
+									>Select Tip %</label
+								>
+
+								<div id="select" class="select-options">
+									<input
+										type="radio"
+										id="5p"
+										name="amount"
+										value="5"
+									/>
+									<label for="5p" id="5p">5%</label>
+
+									<input
+										type="radio"
+										id="10p"
+										name="amount"
+										value="10"
+									/>
+									<label for="10p" id="10p">10%</label>
+
+									<input
+										type="radio"
+										id="15p"
+										name="amount"
+										value="15"
+									/>
+									<label for="15p" id="15p">15%</label>
+
+									<input
+										type="radio"
+										id="25p"
+										name="amount"
+										value="25"
+									/>
+									<label for="25p" id="25p">25%</label>
+
+									<input
+										type="radio"
+										id="50p"
+										name="amount"
+										value="50"
+									/>
+									<label
+										class="custom-label"
+										for="50p"
+										id="50p"
+										>50%</label
+									>
+
+									<input
+										class="custom-input"
+										type="number"
+										id="custom"
+										name="amount"
+										placeholder="Custom"
+										title="Percentage"
+									/>
+								</div>
+							</div>
+
+							<div class="input-label-group">
+								<div class="flex-input-group">
+									<label class="label" for="bill"
+										>Number of People</label
+									>
+									<p id="people" class="hidden">
+										Can't Be Zero
+									</p>
+								</div>
+								<input
+									type="number"
+									class="people-amount disabled-input"
+									id="peopleAmount"
+									placeholder="0"
+									min="0"
+								/>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="tip-amount-result">
+					<div class="data-container">
+						<div class="amount-flex-group">
+							<div class="group-title">
+								<h2>Tip Amount</h2>
+								<p>/ person</p>
+							</div>
+
+							<span id="perPerson">$0.00</span>
+						</div>
+
+						<div class="amount-flex-group">
+							<div class="group-title">
+								<h2>Total</h2>
+								<p>/ person</p>
+							</div>
+
+							<span id="total">$0.00</span>
+						</div>
+					</div>
+
+					<button id="reset" class="disabled-button">Reset</button>
+				</div>
+			</div>
+		</section>
+
+		<div class="attribution">
+			Challenge by
+			<a
+				href="https://www.frontendmentor.io?ref=challenge"
+				target="_blank"
+				>Frontend Mentor</a
+			>. Coded by
+			<a href="https://www.frontendmentor.io/profile/kvncodes"
+				>@kvncodes</a
+			>.
+		</div>
+
+		<script src="index.js"></script>
+	</body>
 </html>
