@@ -1,5 +1,5 @@
 const bill = {
-	billAmount: 0,
+	billAmount: 0.0,
 	tipPercentage: 0,
 	numPeople: undefined,
 
@@ -25,7 +25,7 @@ resetButton.disabled = true;
 let customValue;
 
 bill.billInput.addEventListener("input", function () {
-	bill.billAmount = parseInt(this.value);
+	bill.billAmount = parseFloat(this.value);
 
 	if (bill.billAmount === 0 || bill.billAmount <= 0) {
 		bill.billInput.classList.add("danger-input");
@@ -81,8 +81,9 @@ bill.numberOfPeopleInput.addEventListener("input", function () {
 customInput.addEventListener("input", function () {
 	customValue = this.value;
 
-	if (customValue > 100 && customValue < 0) {
+	if (customValue > 100 || customValue < 0) {
 		customInput.value = 0;
+		bill.tipPercentage = 0;
 	} else {
 		for (let opt of selectOptions) {
 			opt.checked = false;
@@ -100,13 +101,12 @@ customInput.addEventListener("input", function () {
 resetButton.addEventListener("click", function () {
 	bill.billAmount = 0;
 	bill.tipPercentage = 0;
-	bill.numPeople = null;
 	bill.billInput.value = null;
 	bill.numberOfPeopleInput.value = null;
 	bill.amountPerPersonDisplay.textContent = "$0.00";
 	bill.amountTotalDisplay.textContent = "$0.00";
-	customInput.value = null;
-	customValue = null;
+	customInput.value = undefined;
+	customValue = undefined;
 	resetButton.disabled = true;
 	for (let opt of selectOptions) {
 		opt.checked = false;
@@ -144,7 +144,7 @@ function updateAmountPersonDisplay(bill) {
 
 function updateTotalPersonDisplay(bill) {
 	let newAmount =
-		bill.billAmount +
+		bill.billAmount / bill.numPeople +
 		(bill.billAmount * bill.tipPercentage) / 100 / bill.numPeople;
 
 	if (Number.isNaN(newAmount) || newAmount === null) {
