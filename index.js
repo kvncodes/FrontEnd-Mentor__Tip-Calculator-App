@@ -101,6 +101,7 @@ customInput.addEventListener("input", function () {
 resetButton.addEventListener("click", function () {
 	bill.billAmount = 0;
 	bill.tipPercentage = 0;
+	bill.numPeople = undefined;
 	bill.billInput.value = null;
 	bill.numberOfPeopleInput.value = null;
 	bill.amountPerPersonDisplay.textContent = "$0.00";
